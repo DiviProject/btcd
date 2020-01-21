@@ -1,4 +1,4 @@
-// Copyright (c) 2014 The btcsuite developers
+// Copyright (c) 2014 The DiviProject developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -12,9 +12,9 @@ const (
 	// notifications.
 	AccountBalanceNtfnMethod = "accountbalance"
 
-	// BtcdConnectedNtfnMethod is the method used for notifications when
+	// DividConnectedNtfnMethod is the method used for notifications when
 	// a wallet server is connected to a chain server.
-	BtcdConnectedNtfnMethod = "btcdconnected"
+	DividConnectedNtfnMethod = "dividconnected"
 
 	// WalletLockStateNtfnMethod is the method used to notify the lock state
 	// of a wallet has changed.
@@ -28,7 +28,7 @@ const (
 // AccountBalanceNtfn defines the accountbalance JSON-RPC notification.
 type AccountBalanceNtfn struct {
 	Account   string
-	Balance   float64 // In BTC
+	Balance   float64 // In DIVI
 	Confirmed bool    // Whether Balance is confirmed or unconfirmed.
 }
 
@@ -42,15 +42,15 @@ func NewAccountBalanceNtfn(account string, balance float64, confirmed bool) *Acc
 	}
 }
 
-// BtcdConnectedNtfn defines the btcdconnected JSON-RPC notification.
-type BtcdConnectedNtfn struct {
+// DividConnectedNtfn defines the dividconnected JSON-RPC notification.
+type DividConnectedNtfn struct {
 	Connected bool
 }
 
-// NewBtcdConnectedNtfn returns a new instance which can be used to issue a
-// btcdconnected JSON-RPC notification.
-func NewBtcdConnectedNtfn(connected bool) *BtcdConnectedNtfn {
-	return &BtcdConnectedNtfn{
+// NewDividConnectedNtfn returns a new instance which can be used to issue a
+// dividconnected JSON-RPC notification.
+func NewDividConnectedNtfn(connected bool) *DividConnectedNtfn {
+	return &DividConnectedNtfn{
 		Connected: connected,
 	}
 }
@@ -89,7 +89,7 @@ func init() {
 	flags := UFWalletOnly | UFWebsocketOnly | UFNotification
 
 	MustRegisterCmd(AccountBalanceNtfnMethod, (*AccountBalanceNtfn)(nil), flags)
-	MustRegisterCmd(BtcdConnectedNtfnMethod, (*BtcdConnectedNtfn)(nil), flags)
+	MustRegisterCmd(DividConnectedNtfnMethod, (*DividConnectedNtfn)(nil), flags)
 	MustRegisterCmd(WalletLockStateNtfnMethod, (*WalletLockStateNtfn)(nil), flags)
 	MustRegisterCmd(NewTxNtfnMethod, (*NewTxNtfn)(nil), flags)
 }

@@ -1,4 +1,4 @@
-// Copyright (c) 2013-2016 The btcsuite developers
+// Copyright (c) 2013-2016 The DiviProject developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -9,7 +9,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg/chainhash"
+	"github.com/DiviProject/divid/chaincfg/chainhash"
 )
 
 // MaxBlockHeaderPayload is the maximum number of bytes a block header can be.
@@ -56,19 +56,19 @@ func (h *BlockHeader) BlockHash() chainhash.Hash {
 	return chainhash.DoubleHashH(buf.Bytes())
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// DiviDecode decodes r using the bitcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 // See Deserialize for decoding block headers stored to disk, such as in a
 // database, as opposed to decoding block headers from the wire.
-func (h *BlockHeader) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
+func (h *BlockHeader) DiviDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
 	return readBlockHeader(r, pver, h)
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// DiviEncode encodes the receiver to w using the bitcoin protocol encoding.
 // This is part of the Message interface implementation.
 // See Serialize for encoding block headers to be stored to disk, such as in a
 // database, as opposed to encoding block headers for the wire.
-func (h *BlockHeader) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
+func (h *BlockHeader) DiviEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	return writeBlockHeader(w, pver, h)
 }
 

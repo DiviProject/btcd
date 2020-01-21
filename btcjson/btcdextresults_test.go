@@ -1,4 +1,4 @@
-// Copyright (c) 2016-2017 The btcsuite developers
+// Copyright (c) 2016-2017 The DiviProject developers
 // Copyright (c) 2015-2016 The Decred developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
@@ -9,13 +9,13 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/btcsuite/btcd/btcjson"
+	"github.com/DiviProject/divid/btcjson"
 )
 
-// TestBtcdExtCustomResults ensures any results that have custom marshalling
+// TestDividExtCustomResults ensures any results that have custom marshalling
 // work as inteded.
 // and unmarshal code of results are as expected.
-func TestBtcdExtCustomResults(t *testing.T) {
+func TestDividExtCustomResults(t *testing.T) {
 	t.Parallel()
 
 	tests := []struct {

@@ -1,4 +1,4 @@
-// Copyright (c) 2014 The btcsuite developers
+// Copyright (c) 2014 The DiviProject developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -81,7 +81,7 @@ const (
 	ErrRPCTxAlreadyInChain  RPCErrorCode = -27
 )
 
-// Errors that are specific to btcd.
+// Errors that are specific to divid.
 const (
 	ErrRPCNoWallet      RPCErrorCode = -1
 	ErrRPCUnimplemented RPCErrorCode = -1

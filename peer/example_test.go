@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2018 The btcsuite developers
+// Copyright (c) 2015-2018 The DiviProject developers
 // Copyright (c) 2016-2018 The Decred developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
@@ -10,9 +10,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/peer"
-	"github.com/btcsuite/btcd/wire"
+	"github.com/DiviProject/divid/chaincfg"
+	"github.com/DiviProject/divid/peer"
+	"github.com/DiviProject/divid/wire"
 )
 
 // mockRemotePeer creates a basic inbound peer listening on the simnet port for

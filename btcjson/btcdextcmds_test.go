@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2016 The btcsuite developers
+// Copyright (c) 2014-2016 The DiviProject developers
 // Copyright (c) 2015-2016 The Decred developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
@@ -12,14 +12,14 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/btcsuite/btcd/btcjson"
+	"github.com/DiviProject/divid/btcjson"
 )
 
-// TestBtcdExtCmds tests all of the btcd extended commands marshal and unmarshal
+// TestDividExtCmds tests all of the divid extended commands marshal and unmarshal
 // into valid results include handling of optional fields being omitted in the
 // marshalled command, while optional fields with defaults have the default
 // assigned on unmarshalled commands.
-func TestBtcdExtCmds(t *testing.T) {
+func TestDividExtCmds(t *testing.T) {
 	t.Parallel()
 
 	testID := int(1)

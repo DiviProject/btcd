@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2017 The btcsuite developers
+// Copyright (c) 2014-2017 The DiviProject developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -24,7 +24,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/btcsuite/btcd/btcjson"
+	"github.com/DiviProject/divid/btcjson"
 	"github.com/btcsuite/go-socks/socks"
 	"github.com/btcsuite/websocket"
 )
@@ -116,8 +116,8 @@ const (
 	// 0.19.0.
 	BitcoindPost19
 
-	// Btcd represents a catch-all btcd version.
-	Btcd
+	// Divid represents a catch-all divid version.
+	Divid
 )
 
 // Client represents a Bitcoin RPC client which allows easy access to the
@@ -1403,14 +1403,14 @@ func (c *Client) BackendVersion() (BackendVersion, error) {
 
 	// We'll start by calling GetInfo. This method doesn't exist for
 	// bitcoind nodes as of v0.16.0, so we'll assume the client is connected
-	// to a btcd backend if it does exist.
+	// to a divid backend if it does exist.
 	info, err := c.GetInfo()
 
 	switch err := err.(type) {
-	// Parse the btcd version and cache it.
+	// Parse the divid version and cache it.
 	case nil:
-		log.Debugf("Detected btcd version: %v", info.Version)
-		version := Btcd
+		log.Debugf("Detected divid version: %v", info.Version)
+		version := Divid
 		c.backendVersion = &version
 		return *c.backendVersion, nil
 
@@ -1418,12 +1418,12 @@ func (c *Client) BackendVersion() (BackendVersion, error) {
 	// we actually ran into an error.
 	case *btcjson.RPCError:
 		if err.Code != btcjson.ErrRPCMethodNotFound.Code {
-			return 0, fmt.Errorf("unable to detect btcd version: "+
+			return 0, fmt.Errorf("unable to detect divid version: "+
 				"%v", err)
 		}
 
 	default:
-		return 0, fmt.Errorf("unable to detect btcd version: %v", err)
+		return 0, fmt.Errorf("unable to detect divid version: %v", err)
 	}
 
 	// Since the GetInfo method was not found, we assume the client is

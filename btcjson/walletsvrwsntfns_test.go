@@ -1,4 +1,4 @@
-// Copyright (c) 2014 The btcsuite developers
+// Copyright (c) 2014 The DiviProject developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -11,7 +11,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/btcsuite/btcd/btcjson"
+	"github.com/DiviProject/divid/btcjson"
 )
 
 // TestWalletSvrWsNtfns tests all of the chain server websocket-specific
@@ -44,15 +44,15 @@ func TestWalletSvrWsNtfns(t *testing.T) {
 			},
 		},
 		{
-			name: "btcdconnected",
+			name: "dividconnected",
 			newNtfn: func() (interface{}, error) {
-				return btcjson.NewCmd("btcdconnected", true)
+				return btcjson.NewCmd("dividconnected", true)
 			},
 			staticNtfn: func() interface{} {
-				return btcjson.NewBtcdConnectedNtfn(true)
+				return btcjson.NewDividConnectedNtfn(true)
 			},
-			marshalled: `{"jsonrpc":"1.0","method":"btcdconnected","params":[true],"id":null}`,
-			unmarshalled: &btcjson.BtcdConnectedNtfn{
+			marshalled: `{"jsonrpc":"1.0","method":"dividconnected","params":[true],"id":null}`,
+			unmarshalled: &btcjson.DividConnectedNtfn{
 				Connected: true,
 			},
 		},

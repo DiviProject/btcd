@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The btcsuite developers
+// Copyright (c) 2014-2015 The DiviProject developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -16,25 +16,25 @@ import (
 // no payload.
 type MsgFilterClear struct{}
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// DiviDecode decodes r using the bitcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
-func (msg *MsgFilterClear) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
+func (msg *MsgFilterClear) DiviDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
 	if pver < BIP0037Version {
 		str := fmt.Sprintf("filterclear message invalid for protocol "+
 			"version %d", pver)
-		return messageError("MsgFilterClear.BtcDecode", str)
+		return messageError("MsgFilterClear.DiviDecode", str)
 	}
 
 	return nil
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// DiviEncode encodes the receiver to w using the bitcoin protocol encoding.
 // This is part of the Message interface implementation.
-func (msg *MsgFilterClear) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
+func (msg *MsgFilterClear) DiviEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	if pver < BIP0037Version {
 		str := fmt.Sprintf("filterclear message invalid for protocol "+
 			"version %d", pver)
-		return messageError("MsgFilterClear.BtcEncode", str)
+		return messageError("MsgFilterClear.DiviEncode", str)
 	}
 
 	return nil

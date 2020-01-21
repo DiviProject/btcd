@@ -1,4 +1,4 @@
-// Copyright (c) 2014 The btcsuite developers
+// Copyright (c) 2014 The DiviProject developers
 // Use of this source code is governed by an ISC
 // license that can be found in the LICENSE file.
 
@@ -11,14 +11,14 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/btcsuite/btcd/btcjson"
+	"github.com/DiviProject/divid/btcjson"
 )
 
-// TestBtcWalletExtCmds tests all of the btcwallet extended commands marshal and
+// TestDiviWalletExtCmds tests all of the btcwallet extended commands marshal and
 // unmarshal into valid results include handling of optional fields being
 // omitted in the marshalled command, while optional fields with defaults have
 // the default assigned on unmarshalled commands.
-func TestBtcWalletExtCmds(t *testing.T) {
+func TestDiviWalletExtCmds(t *testing.T) {
 	t.Parallel()
 
 	testID := int(1)

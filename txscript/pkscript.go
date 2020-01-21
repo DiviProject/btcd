@@ -5,10 +5,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/btcsuite/btcd/btcec"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcd/wire"
-	"github.com/btcsuite/btcutil"
+	"github.com/DiviProject/divid/diviec"
+	"github.com/DiviProject/divid/chaincfg"
+	"github.com/DiviProject/divid/wire"
+	"github.com/DiviProject/diviutil"
 	"golang.org/x/crypto/ripemd160"
 )
 
@@ -20,7 +20,7 @@ const (
 	//   Signature hash type (1 byte)
 	//   Public key length (1 byte)
 	//   Public key (33 byte)
-	minPubKeyHashSigScriptLen = 1 + btcec.MinSigLen + 1 + 1 + 33
+	minPubKeyHashSigScriptLen = 1 + diviec.MinSigLen + 1 + 1 + 33
 
 	// maxPubKeyHashSigScriptLen is the maximum length of a signature script
 	// that spends a P2PKH output. The length is composed of the following:
@@ -141,7 +141,7 @@ func (s PkScript) Script() []byte {
 }
 
 // Address encodes the script into an address for the given chain.
-func (s PkScript) Address(chainParams *chaincfg.Params) (btcutil.Address, error) {
+func (s PkScript) Address(chainParams *chaincfg.Params) (diviutil.Address, error) {
 	_, addrs, _, err := ExtractPkScriptAddrs(s.Script(), chainParams)
 	if err != nil {
 		return nil, fmt.Errorf("unable to parse address: %v", err)
@@ -190,7 +190,7 @@ func computeNonWitnessPkScript(sigScript []byte) (PkScript, error) {
 		// signature script. We'll attempt to parse it to ensure this is
 		// a P2PKH redeem script.
 		pubKey := sigScript[len(sigScript)-compressedPubKeyLen:]
-		if btcec.IsCompressedPubKey(pubKey) {
+		if diviec.IsCompressedPubKey(pubKey) {
 			pubKeyHash := hash160(pubKey)
 			script, err := payToPubKeyHashScript(pubKeyHash)
 			if err != nil {
